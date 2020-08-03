@@ -1,2 +1,1 @@
-blank,topline,horizontal,blank,topline
-topline,blank,horizontal,topline,blank
+bottomright,horizontal,horizontalbottom,horizontal,horizontalbottom,horizontal,horizontalbottom,horizontal,horizontalbottom,bottomleft
