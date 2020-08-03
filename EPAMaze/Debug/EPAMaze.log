@@ -1,7 +1,7 @@
 ﻿  main.cpp
-C:\Users\Callum\source\repos\EPAMaze\EPAMaze\main.cpp(7,50): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-C:\Users\Callum\source\repos\EPAMaze\EPAMaze\main.cpp(7,43): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-C:\Users\Callum\source\repos\EPAMaze\EPAMaze\main.cpp(16,75): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\Callum\source\repos\EPAMaze\EPAMaze\main.cpp(72,50): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\Callum\source\repos\EPAMaze\EPAMaze\main.cpp(72,43): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\Callum\source\repos\EPAMaze\EPAMaze\main.cpp(83,75): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=unsigned int
@@ -10,7 +10,80 @@ C:\Users\Callum\source\repos\EPAMaze\EPAMaze\main.cpp(16,75): warning C4244: 'ar
           [
               T=float
           ]
-C:\Users\Callum\source\repos\EPAMaze\EPAMaze\main.cpp(16,51): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\Callum\source\repos\EPAMaze\EPAMaze\main.cpp(83,51): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\Callum\source\repos\EPAMaze\EPAMaze\main.cpp(96,75): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\Callum\source\repos\EPAMaze\EPAMaze\main.cpp(96,51): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\Callum\source\repos\EPAMaze\EPAMaze\main.cpp(111,51): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Callum\source\repos\EPAMaze\EPAMaze\main.cpp(111,31): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Callum\source\repos\EPAMaze\EPAMaze\main.cpp(124,62): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\Callum\source\repos\EPAMaze\EPAMaze\main.cpp(132,82): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\Callum\source\repos\EPAMaze\EPAMaze\main.cpp(132,58): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\Callum\source\repos\EPAMaze\EPAMaze\main.cpp(217,56): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\Callum\source\repos\EPAMaze\EPAMaze\main.cpp(227,92): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=unsigned int
