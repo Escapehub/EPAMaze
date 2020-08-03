@@ -6,18 +6,25 @@ class Animation
 {
 public:
 	sf::Sprite getSprite();
-	void addAnimation(sf::IntRect);
+	void addMoveAnimation(sf::IntRect);
+	void addAttackAnimation(sf::IntRect);
 	void setAnimationSpeed(float);
-	void setEndFrame(int);
+	void setMoveEndFrame(int);
+	void setAttackEndFrame(int);
+	void setAttackStartFrame(int);
 	void setFrameSize(int);
 private:
 	sf::Clock clock;
-	int endFrame;
+	int moveEndFrame;
+	int attackEndFrame;
+	int attackStartFrame;
 	float animationSpeed;
 	int frameSize;
 protected:
-	void update(int);
-	std::vector<sf::IntRect> animations;
+	void updateMove(int);
+	void updateAttack(int);
+	std::vector<sf::IntRect> moveAnimations;
+	std::vector<sf::IntRect> attackAnimations;
 	sf::Sprite sprite;
 };
 

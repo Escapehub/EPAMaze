@@ -4,30 +4,54 @@ sf::Sprite Animation::getSprite() {
 	return sprite;
 }
 
-void Animation::addAnimation(sf::IntRect newani) {
-	animations.push_back(newani);
+void Animation::addMoveAnimation(sf::IntRect newani) {
+	moveAnimations.push_back(newani);
+}
+
+void Animation::addAttackAnimation(sf::IntRect newani) {
+	attackAnimations.push_back(newani);
 }
 
 void Animation::setAnimationSpeed(float speed) {
 	animationSpeed = speed;
 }
 
-void Animation::setEndFrame(int endframe) {
-	endFrame = endframe;
+void Animation::setMoveEndFrame(int endframe) {
+	moveEndFrame = endframe;
+}
+
+void Animation::setAttackEndFrame(int endframe) {
+	attackEndFrame = endframe;
+}
+
+void Animation::setAttackStartFrame(int frame) {
+	attackStartFrame = frame;
 }
 
 void Animation::setFrameSize(int size) {
 	frameSize = size;
 }
 
-void Animation::update(int ani) {
+void Animation::updateMove(int ani) {
 	if (clock.getElapsedTime().asSeconds() > animationSpeed) {
-		if (animations[ani].left == endFrame)
-			animations[ani].left = 0;
+		if (moveAnimations[ani].left == moveEndFrame)
+			moveAnimations[ani].left = 0;
 		else
-			animations[ani].left += frameSize;
+			moveAnimations[ani].left += frameSize;
 
-		sprite.setTextureRect(animations[ani]);
+		sprite.setTextureRect(moveAnimations[ani]);
+		clock.restart();
+	}
+}
+
+void Animation::updateAttack(int ani) {
+	if (clock.getElapsedTime().asSeconds() > animationSpeed) {
+		if (attackAnimations[ani].left == attackEndFrame)
+			attackAnimations[ani].left = attackStartFrame;
+		else
+			attackAnimations[ani].left += frameSize;
+
+		sprite.setTextureRect(attackAnimations[ani]);
 		clock.restart();
 	}
 }
