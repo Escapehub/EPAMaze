@@ -16,12 +16,16 @@ void Animation::setEndFrame(int endframe) {
 	endFrame = endframe;
 }
 
+void Animation::setFrameSize(int size) {
+	frameSize = size;
+}
+
 void Animation::update(int ani) {
 	if (clock.getElapsedTime().asSeconds() > animationSpeed) {
 		if (animations[ani].left == endFrame)
 			animations[ani].left = 0;
 		else
-			animations[ani].left += 64;
+			animations[ani].left += frameSize;
 
 		sprite.setTextureRect(animations[ani]);
 		clock.restart();

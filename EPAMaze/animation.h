@@ -9,10 +9,12 @@ public:
 	void addAnimation(sf::IntRect);
 	void setAnimationSpeed(float);
 	void setEndFrame(int);
+	void setFrameSize(int);
 private:
 	sf::Clock clock;
 	int endFrame;
 	float animationSpeed;
+	int frameSize;
 protected:
 	void update(int);
 	std::vector<sf::IntRect> animations;
