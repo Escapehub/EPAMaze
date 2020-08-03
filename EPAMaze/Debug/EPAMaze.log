@@ -1,0 +1,22 @@
+﻿  main.cpp
+C:\Users\Callum\source\repos\EPAMaze\EPAMaze\main.cpp(7,50): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\Callum\source\repos\EPAMaze\EPAMaze\main.cpp(7,43): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\Callum\source\repos\EPAMaze\EPAMaze\main.cpp(16,75): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\Callum\source\repos\EPAMaze\EPAMaze\main.cpp(16,51): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+  EPAMaze.vcxproj -> C:\Users\Callum\source\repos\EPAMaze\Debug\EPAMaze.exe
