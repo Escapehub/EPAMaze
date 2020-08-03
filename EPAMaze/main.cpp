@@ -6,6 +6,13 @@
 #include "sectors.hpp"
 #include "menu.h"
 
+bool shouldShowTreasure() {
+    int random = rand() % 2;
+    if (random == 2)
+        return true;
+    else
+        return false;
+}
 int main()
 {
 
@@ -68,15 +75,36 @@ int main()
     sf::Texture playerTexture;
     playerTexture.loadFromFile("character.png");
     Player player(playerTexture);
-    player.setEndFrame(192);
+    player.setMoveEndFrame(192);
     player.setAnimationSpeed(.1f);
     player.setFrameSize(64);
-    player.setSpeed(.5f); // .05f
+    player.setSpeed(.1f); // .05f
     player.setPos(sf::Vector2f(window.getSize().x / 2, window.getSize().y / 2));
-    player.addAnimation(sf::IntRect(0, 192, 64, 64)); // up
-    player.addAnimation(sf::IntRect(0, 0, 64, 64)); // down
-    player.addAnimation(sf::IntRect(0, 64, 64, 64)); // left
-    player.addAnimation(sf::IntRect(0, 128, 64, 64)); // right
+    player.addMoveAnimation(sf::IntRect(0, 192, 64, 64)); // up
+    player.addMoveAnimation(sf::IntRect(0, 0, 64, 64)); // down
+    player.addMoveAnimation(sf::IntRect(0, 64, 64, 64)); // left
+    player.addMoveAnimation(sf::IntRect(0, 128, 64, 64)); // right
+
+    sf::Texture knightTexture;
+    knightTexture.loadFromFile("knight.png");
+    Player knight(knightTexture);
+    knight.setMoveEndFrame(896);
+    knight.setAnimationSpeed(0.1f);
+    knight.setFrameSize(128);
+    knight.setSpeed(.1f);
+    knight.setPos(sf::Vector2f(window.getSize().x / 2, window.getSize().y / 2));
+    knight.addMoveAnimation(sf::IntRect(0, 256, 128, 128)); // up
+    knight.addMoveAnimation(sf::IntRect(0, 768, 128, 128)); // down
+    knight.addMoveAnimation(sf::IntRect(0, 0, 128, 128)); // left
+    knight.addMoveAnimation(sf::IntRect(0, 512, 128, 128)); // Right
+
+    knight.setAttackStartFrame(1024);
+    knight.setAttackEndFrame(1408);
+    knight.addAttackAnimation(sf::IntRect(0, 896, 128, 128)); // attack left
+    knight.addAttackAnimation(sf::IntRect(256, 896, 128, 128)); // attack up
+    knight.addAttackAnimation(sf::IntRect(512, 896, 128, 128)); // attack right
+    knight.addAttackAnimation(sf::IntRect(768, 896, 128, 128)); // attack down
+    
 
     // Menu
     Menu menu(window.getSize().x, window.getSize().y);
@@ -94,9 +122,18 @@ int main()
     playerwealth.setFillColor(sf::Color::Black);
     playerwealth.setPosition(sf::Vector2f(window.getSize().x - 150, 20));
     
+    // Treasure
+    sf::Texture treasureTexture;
+    treasureTexture.loadFromFile("treasure.png");
+    sf::Sprite treasure(treasureTexture);
+    treasure.setTextureRect(sf::IntRect(0, 0, 32, 32));
+    treasure.setPosition(sf::Vector2f(rand() % window.getSize().x, rand() % window.getSize().y));
+    bool showTreasure = false;
     // Game running loop
     while (window.isOpen())
     {
+        window.clear();
+        bool isAttacking = false;
         playerwealth.setString("Wealth: " + std::to_string(wealth));
         sf::Event event;
         while (window.pollEvent(event))
@@ -104,7 +141,7 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
 
-            // Menu pressed events
+            // key released events
             switch (event.type)
             {
             case sf::Event::KeyReleased:
@@ -139,40 +176,57 @@ int main()
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
             isPlaying = false;
 
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+            knight.Attack();
+            isAttacking = true;
+        }
         // Move Player
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-            player.Move(Player::Direction::Up);
+            knight.Move(Player::Direction::Up);
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-            player.Move(Player::Direction::Right);
+            knight.Move(Player::Direction::Right);
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-            player.Move(Player::Direction::Down);
+            knight.Move(Player::Direction::Down);
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-            player.Move(Player::Direction::Left);
+            knight.Move(Player::Direction::Left);
 
         // Loop player around screen
-        if (player.getSprite().getPosition().x > window.getSize().x) { // Horizontal Right
+        if (knight.getSprite().getPosition().x > window.getSize().x) { // Horizontal Right
             currentSector.y++;
-            player.setPos(sf::Vector2f(0, player.getSprite().getPosition().y));
+            showTreasure = shouldShowTreasure();
+            knight.setPos(sf::Vector2f(0, knight.getSprite().getPosition().y));
         }
-        if (player.getSprite().getPosition().x < 0) { // Horizontal left
+        if (knight.getSprite().getPosition().x < 0) { // Horizontal left
             currentSector.y--;
-            player.setPos(sf::Vector2f(window.getSize().x, player.getSprite().getPosition().y));
+            showTreasure = shouldShowTreasure();
+            knight.setPos(sf::Vector2f(window.getSize().x, knight.getSprite().getPosition().y));
         }
-        if (player.getSprite().getPosition().y > window.getSize().y) { // Vertical down
+        if (knight.getSprite().getPosition().y > window.getSize().y) { // Vertical down
             currentSector.x++;
-            player.setPos(sf::Vector2f(player.getSprite().getPosition().x, 0));
+            showTreasure = shouldShowTreasure();
+            knight.setPos(sf::Vector2f(knight.getSprite().getPosition().x, 0));
         }
-        if (player.getSprite().getPosition().y < 0) { // Vertical up
+        if (knight.getSprite().getPosition().y < 0) { // Vertical up
             currentSector.x--;
-            player.setPos(sf::Vector2f(player.getSprite().getPosition().x, window.getSize().y));
+            showTreasure = shouldShowTreasure();
+            knight.setPos(sf::Vector2f(knight.getSprite().getPosition().x, window.getSize().y));
+        }
+
+        // Attack treasure to pick up
+        if (knight.getSprite().getGlobalBounds().intersects(treasure.getGlobalBounds())) {
+            if (isAttacking)
+                wealth += 1;
+
         }
 
         // Show window with assests
-        window.clear();
+        
         if (isPlaying) {
             window.draw(tilemap);
-            window.draw(player.getSprite());
+            window.draw(knight.getSprite());
             window.draw(playerwealth);
+            if (showTreasure)
+                window.draw(treasure);
         }
         else {
             menu.Draw(window);
