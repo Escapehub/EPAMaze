@@ -16,15 +16,15 @@ Create a text file with a map defined available flags are
 
 - horizontal
 - [cross](readme/cross.png)
-- vertical
-- bottomright
-- bottomleft
-- topright
-- topleft
-- verticalright
-- verticalleft
-- horizontaltop
-- horizontalbottom
+- [vertical](readme/vertical.png)
+- [bottomright](readme/bottomright.png)
+- [bottomleft](readme/bottomleft.png)
+- [topright](readme/topright.png)
+- [topleft](readme/topleft.png)
+- [verticalright](readme/verticalright.png)
+- [verticalleft](readme/verticalleft.png)
+- [horizontaltop](readme/horizontaltop.png)
+- [horizontalbottom](readme/horizontalbottom.png)
 
 Upon launching the game drag in config file to console and press enter
 
