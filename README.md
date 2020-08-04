@@ -9,7 +9,7 @@
 - [x] Block player from going wrong direction
 - [x] Block player from going outside of map array index
 - [x] Create random start and random end
-- [ ] Create treasure room deposit system
+- [x] Create treasure room deposit system
 ## Create Config File
 
 Create a comma seperated text file with **NO** spaces.
