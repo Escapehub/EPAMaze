@@ -9,12 +9,13 @@
 - [x] Block player from going wrong direction
 - [x] Block player from going outside of map array index
 - [x] Create random start and random end
+- [ ] Create treasure room deposit system
 ## How to play
 
 Create a text file with a map defined available flags are
 
 - horizontal
-- cross
+- [cross](readme/cross.png)
 - vertical
 - bottomright
 - bottomleft
