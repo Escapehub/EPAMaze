@@ -42,7 +42,7 @@ namespace Sector
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	};
-	std::map<std::string, bool> HorizontalMetaData = { {"Up", false}, {"Right", true}, {"Down", false}, {"Left", true} };
+	std::map<std::string, bool> HorizontalMetaData = { {"Up", false}, {"Right", true}, {"Down", false}, {"Left", true}, {"EndSector", false}, {"Treasure", true}, {"Goblin", true} };
 	Sectors Horizontal(HorizontalMetaData, HorizontalSector);
 
 	int CrossSector[] =
@@ -64,7 +64,7 @@ namespace Sector
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	};
-	std::map <std::string, bool> CrossMetaData = { {"Up", true}, {"Right", true}, {"Down", true}, {"Left", true} };
+	std::map <std::string, bool> CrossMetaData = { {"Up", true}, {"Right", true}, {"Down", true}, {"Left", true}, {"EndSector", false}, {"Treasure", true}, {"Goblin", true} };
 	Sectors Cross(CrossMetaData, CrossSector);
 
 	int VerticalSector[] =
@@ -86,7 +86,7 @@ namespace Sector
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	};
-	std::map <std::string, bool> VerticalSectorMetaData = { {"Up", true}, {"Right", false}, {"Down", true}, {"Left", true} };
+	std::map <std::string, bool> VerticalSectorMetaData = { {"Up", true}, {"Right", false}, {"Down", true}, {"Left", true}, {"EndSector", false}, {"Treasure", true}, {"Goblin", true} };
 	Sectors Vertical(VerticalSectorMetaData, VerticalSector);
 
 	int BottomRightSector[] =
@@ -108,7 +108,7 @@ namespace Sector
 	  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	};
-	std::map <std::string, bool> BottomRightMetaData = { {"Up", false}, {"Right", true}, {"Down", true}, {"Left", false} };
+	std::map <std::string, bool> BottomRightMetaData = { {"Up", false}, {"Right", true}, {"Down", true}, {"Left", false}, {"EndSector", false}, {"Treasure", true}, {"Goblin", true} };
 	Sectors BottomRight(BottomRightMetaData, BottomRightSector);
 
 	int TopRightSector[] =
@@ -130,7 +130,7 @@ namespace Sector
 	  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	};
-	std::map <std::string, bool> TopRightMetaData = { {"Up", true}, {"Right", true}, {"Down", false}, {"Left", false} };
+	std::map <std::string, bool> TopRightMetaData = { {"Up", true}, {"Right", true}, {"Down", false}, {"Left", false}, {"EndSector", false}, {"Treasure", true}, {"Goblin", true} };
 	Sectors TopRight(TopRightMetaData, TopRightSector);
 
 	int TopLeftSector[] =
@@ -152,7 +152,7 @@ namespace Sector
 	  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	};
-	std::map <std::string, bool> TopLeftMetaData = { {"Up", true}, {"Right", false}, {"Down", false}, {"Left", true} };
+	std::map <std::string, bool> TopLeftMetaData = { {"Up", true}, {"Right", false}, {"Down", false}, {"Left", true}, {"EndSector", false}, {"Treasure", true}, {"Goblin", true} };
 	Sectors TopLeft(TopLeftMetaData, TopLeftSector);
 
 	int BottomLeftSector[] =
@@ -174,7 +174,7 @@ namespace Sector
 	  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	};
-	std::map <std::string, bool> BottomLeftMetaData = { {"Up", false}, {"Right", false}, {"Down", true}, {"Left", true} };
+	std::map <std::string, bool> BottomLeftMetaData = { {"Up", false}, {"Right", false}, {"Down", true}, {"Left", true}, {"EndSector", false}, {"Treasure", true}, {"Goblin", true} };
 	Sectors BottomLeft(BottomLeftMetaData, BottomLeftSector);
 
 	int VerticalRightSector[] =
@@ -196,7 +196,7 @@ namespace Sector
 	  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	};
-	std::map <std::string, bool> VerticalRightMetaData = { {"Up", true}, {"Right", true}, {"Down", true}, {"Left", false} };
+	std::map <std::string, bool> VerticalRightMetaData = { {"Up", true}, {"Right", true}, {"Down", true}, {"Left", false}, {"EndSector", false}, {"Treasure", true}, {"Goblin", true} };
 	Sectors VerticalRight(VerticalRightMetaData, VerticalRightSector);
 
 	int VerticalLeftSector[] =
@@ -218,7 +218,7 @@ namespace Sector
 	  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	};
-	std::map <std::string, bool> VerticalLeftMetaData = { {"Up", true}, {"Right", false}, {"Down", true}, {"Left", true} };
+	std::map <std::string, bool> VerticalLeftMetaData = { {"Up", true}, {"Right", false}, {"Down", true}, {"Left", true}, {"EndSector", false}, {"Treasure", true}, {"Goblin", true} };
 	Sectors VerticalLeft(VerticalLeftMetaData, VerticalLeftSector);
 
 	int HorizontalTopSector[] =
@@ -240,7 +240,7 @@ namespace Sector
 	  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	};
-	std::map <std::string, bool> HorizontalTopMetaData = { {"Up", true}, {"Right", true}, {"Down", false}, {"Left", true} };
+	std::map <std::string, bool> HorizontalTopMetaData = { {"Up", true}, {"Right", true}, {"Down", false}, {"Left", true}, {"EndSector", false}, {"Treasure", true}, {"Goblin", true} };
 	Sectors HorizontalTop(HorizontalTopMetaData, HorizontalTopSector);
 
 	int HorizontalBottomSector[] =
@@ -262,6 +262,6 @@ namespace Sector
 	  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	};
-	std::map <std::string, bool> HorzintalBottomMetaData = { {"Up", false}, {"Right", true}, {"Down", true}, {"Left", true} };
+	std::map <std::string, bool> HorzintalBottomMetaData = { {"Up", false}, {"Right", true}, {"Down", true}, {"Left", true}, {"EndSector", false}, {"Treasure", true}, {"Goblin", true} };
 	Sectors HorizontalBottom(HorzintalBottomMetaData, HorizontalBottomSector);
 }
