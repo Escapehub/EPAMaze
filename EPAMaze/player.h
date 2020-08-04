@@ -6,7 +6,7 @@
 class Player : public Animation 
 {
 public:
-	Player(sf::Texture&);
+	Player(sf::Texture&, sf::IntRect);
 	void setSpeed(float);
 	enum Direction {Up, Down, Left, Right};
 	void Move(Direction);

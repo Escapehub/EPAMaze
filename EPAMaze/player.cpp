@@ -1,7 +1,8 @@
 #include "player.h"
 
-Player::Player(sf::Texture& texture) {
+Player::Player(sf::Texture& texture, sf::IntRect startrect) {
 	sprite.setTexture(texture);
+	sprite.setTextureRect(startrect);
 }
 
 void Player::setSpeed(float _speed) {
@@ -52,5 +53,4 @@ void Player::Attack() {
 		updateAttack(2);
 		break;
 	}
-	std::cout << "CurrentDirect: " << currentDirection << std::endl;
 }
