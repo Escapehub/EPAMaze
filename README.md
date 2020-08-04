@@ -12,7 +12,11 @@
 - [ ] Create treasure room deposit system
 ## How to play
 
-Create a text file with a map defined available flags are
+Create a comma seperated text file with **NO** spaces.
+Map area is **10x10**
+
+###### [Example config 1](Classic.txt)
+###### [Example config 2](Crossroad.txt)
 
 - [horizontal](readme/horizontal.png)
 - [cross](readme/cross.png)
