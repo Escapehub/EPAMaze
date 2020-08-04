@@ -1,2 +1,0 @@
-bottomright,horizontal,horizontalbottom,horizontal,horizontalbottom,horizontal,horizontalbottom,horizontal,horizontalbottom,bottomleft
-verticalright,horizontal,cross,horizontal
