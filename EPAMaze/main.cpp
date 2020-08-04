@@ -97,7 +97,7 @@ int main()
     goblin.addMoveAnimation(sf::IntRect(0, 0, 64, 64)); // down
     goblin.addMoveAnimation(sf::IntRect(0, 192, 64, 64)); // left
     goblin.addMoveAnimation(sf::IntRect(0, 64, 64, 64)); // right
-    
+    sf::Clock goblinMoveClock;
     // Menu
     Menu menu(window.getSize().x, window.getSize().y);
 
@@ -154,7 +154,7 @@ int main()
                 if (event.key.code == sf::Keyboard::E) {
                     map[currentSector.x][currentSector.y].MetaData["HasDroppedTreasure"] = true;
                     map[currentSector.x][currentSector.y].droppedTreasure.setPosition(sf::Vector2f(knight.getSprite().getPosition().x, knight.getSprite().getPosition().y));
-                    wealth -= 5;
+                    wealth -= 1;
                 }
             }
 
@@ -267,13 +267,24 @@ int main()
                 std::printf("You must clear the room before moving on! \n");
             }
         }
-
-        // Goblin temp movement
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad6))
-            goblin.Move(Player::Direction::Right);
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad4))
-            goblin.Move(Player::Direction::Left);
-        
+        // Goblin movement
+        if (goblinMoveClock.getElapsedTime().asSeconds() > 1) {
+            int random = rand() % 3;
+            switch (random) {
+            case 0:
+                goblin.Move(Player::Direction::Up);
+                break;
+            case 1:
+                goblin.Move(Player::Direction::Right);
+                break;
+            case 2:
+                goblin.Move(Player::Direction::Down);
+            case 3:
+                goblin.Move(Player::Direction::Left);
+                break;
+            }
+            goblinMoveClock.restart();
+        }
         // Game over
         if (map[currentSector.x][currentSector.y].MetaData["EndSector"]) {
             std::cout << "You made it to the end \n Your score was: " << std::to_string(wealth) << "\nLoad a new config file to play again!" << std::endl;
