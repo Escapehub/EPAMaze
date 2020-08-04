@@ -45,13 +45,16 @@ void Animation::updateMove(int ani) {
 }
 
 void Animation::updateAttack(int ani) {
-	if (clock.getElapsedTime().asSeconds() > animationSpeed) {
-		if (attackAnimations[ani].left == attackEndFrame)
-			attackAnimations[ani].left = attackStartFrame;
-		else
-			attackAnimations[ani].left += frameSize;
+	while (attackAnimations[ani].left != attackEndFrame) {
+		if (clock.getElapsedTime().asSeconds() > animationSpeed) {
+			if (attackAnimations[ani].left == attackEndFrame)
+				attackAnimations[ani].left = attackStartFrame;
+			else
+				attackAnimations[ani].left += frameSize;
 
-		sprite.setTextureRect(attackAnimations[ani]);
-		clock.restart();
+			sprite.setTextureRect(attackAnimations[ani]);
+			clock.restart();
+		}
 	}
+	attackAnimations[ani].left = attackStartFrame;
 }
