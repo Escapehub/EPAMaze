@@ -3,12 +3,12 @@
 ## To do
 
 - [ ] Write full documentation on design, build and test
-- [ ] Add loop for attack animation
-- [ ] Create enemies
-- [ ] Build one full map
-- [ ] Block player from going wrong direction
-- [ ] Block player from going outside of map array index
-- [ ] Create random start and random end
+- [x] Add loop for attack animation
+- [x] Create enemies
+- [x] Build one full map
+- [x] Block player from going wrong direction
+- [x] Block player from going outside of map array index
+- [x] Create random start and random end
 ## How to play
 
 Create a text file with a map defined available flags are
