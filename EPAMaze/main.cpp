@@ -70,7 +70,7 @@ int main()
     knight.setMoveEndFrame(896);
     knight.setAnimationSpeed(0.1f);
     knight.setFrameSize(128);
-    knight.setSpeed(.4f);
+    knight.setSpeed(.1f);
     knight.setPos(sf::Vector2f(window.getSize().x / 2, window.getSize().y / 2));
     knight.addMoveAnimation(sf::IntRect(0, 256, 128, 128)); // up
     knight.addMoveAnimation(sf::IntRect(0, 768, 128, 128)); // down
@@ -135,9 +135,9 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
-
-            // Attack treasure to pick up
+            
             if (event.type == sf::Event::KeyPressed) {
+                // Item pickup and goblin attack
                 if (event.key.code == sf::Keyboard::Space) {
                     knight.Attack();
                     isAttacking = true;
@@ -150,9 +150,15 @@ int main()
                         map[currentSector.x][currentSector.y].MetaData["Goblin"] = false;
                     }
                 }
+                // Drop treasure
+                if (event.key.code == sf::Keyboard::E) {
+                    map[currentSector.x][currentSector.y].MetaData["HasDroppedTreasure"] = true;
+                    map[currentSector.x][currentSector.y].droppedTreasure.setPosition(sf::Vector2f(knight.getSprite().getPosition().x, knight.getSprite().getPosition().y));
+                    wealth -= 5;
+                }
             }
 
-            // key released events
+            // Main menu control
             switch (event.type)
             {
             case sf::Event::KeyReleased:
@@ -274,7 +280,6 @@ int main()
             isPlaying = false;
             main();
         }
-
         // Show window with assests
         if (isPlaying) {
             window.draw(tilemap);
@@ -284,6 +289,8 @@ int main()
                 window.draw(treasure);
             if (map[currentSector.x][currentSector.y].MetaData["Goblin"])
                 window.draw(goblin.getSprite());
+            if (map[currentSector.x][currentSector.y].MetaData["HasDroppedTreasure"])
+                window.draw(map[currentSector.x][currentSector.y].droppedTreasure);
         }
         else {
             menu.Draw(window);
