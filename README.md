@@ -14,7 +14,7 @@
 
 Create a text file with a map defined available flags are
 
-- horizontal
+- [horizontal](readme/horizontal.png)
 - [cross](readme/cross.png)
 - [vertical](readme/vertical.png)
 - [bottomright](readme/bottomright.png)
