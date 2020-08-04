@@ -1,0 +1,10 @@
+bottomright,horizontalbottom,horizontalbottom,horizontalbottom,horizontalbottom,horizontalbottom,horizontalbottom,horizontalbottom,horizontalbottom,bottomleft
+verticalright,cross,cross,cross,cross,cross,cross,cross,cross,verticalleft
+verticalright,cross,cross,cross,cross,cross,cross,cross,cross,verticalleft
+verticalright,cross,cross,cross,cross,cross,cross,cross,cross,verticalleft
+verticalright,cross,cross,cross,cross,cross,cross,cross,cross,verticalleft
+verticalright,cross,cross,cross,cross,cross,cross,cross,cross,verticalleft
+verticalright,cross,cross,cross,cross,cross,cross,cross,cross,verticalleft
+verticalright,cross,cross,cross,cross,cross,cross,cross,cross,verticalleft
+verticalright,cross,cross,cross,cross,cross,cross,cross,cross,verticalleft
+topright,horizontaltop,horizontaltop,horizontaltop,horizontaltop,horizontaltop,horizontaltop,horizontaltop,horizontaltop,topleft
