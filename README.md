@@ -1,4 +1,6 @@
 # EPAMaze
+## About
+Maze game for Baltic End Point Assessment
 
 ## To do
 
@@ -10,6 +12,8 @@
 - [x] Block player from going outside of map array index
 - [x] Create random start and random end
 - [x] Create treasure room deposit system
+- [x] Goblin movement
+- [ ] Add more threats 
 ## Create Config File
 
 Create a comma seperated text file with **NO** spaces.
