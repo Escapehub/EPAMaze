@@ -2,21 +2,9 @@
 ## About
 Maze game for Baltic End Point Assessment
 
-## To do
+## Download Latest Release
+[Click here](https://github.com/Escapehub/EPAMaze/releases/latest) to download latest release
 
-- [ ] Write full documentation on design, build and test
-- [x] Add loop for attack animation
-- [x] Create enemies
-- [x] Build one full map
-- [x] Block player from going wrong direction
-- [x] Block player from going outside of map array index
-- [x] Create random start and random end
-- [x] Create treasure room deposit system
-- [x] Goblin movement
-- [x] Add more threats 
-- [x] "You must clear room to move on" show as text on screen
-- [x] Bomb explosion 
-- [ ] End game screen
 ## Create Config File
 
 Create a comma seperated text file with **NO** spaces.
@@ -52,6 +40,22 @@ To attack/pickup items press **Space**
 
 To drop treasure on the ground press **E**
 
-To defuse bombs press **F*
+To defuse bombs press **F**
 
 Find as much treasure as you can and reach the end!
+
+## To do
+
+- [ ] Write full documentation on design, build and test
+- [x] Add loop for attack animation
+- [x] Create enemies
+- [x] Build one full map
+- [x] Block player from going wrong direction
+- [x] Block player from going outside of map array index
+- [x] Create random start and random end
+- [x] Create treasure room deposit system
+- [x] Goblin movement
+- [x] Add more threats 
+- [x] "You must clear room to move on" show as text on screen
+- [x] Bomb explosion 
+- [x] End game screen
