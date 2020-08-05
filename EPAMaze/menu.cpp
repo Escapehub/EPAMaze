@@ -27,7 +27,6 @@ Menu::Menu(float width, float height) {
 	menu[2].setString("Exit");
 	menu[2].setPosition(sf::Vector2f(width / 3, height / (MAX_NUMBER_OF_ITEMS + 1) * 3));
 
-
 	selectedItemIndex = 0;
 }
 
