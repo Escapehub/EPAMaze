@@ -70,7 +70,7 @@ int main()
     knight.setMoveEndFrame(896);
     knight.setAnimationSpeed(0.1f);
     knight.setFrameSize(128);
-    knight.setSpeed(.5f); // 0.1f
+    knight.setSpeed(.1f); // 0.1f
     knight.setPos(sf::Vector2f(window.getSize().x / 2, window.getSize().y / 2));
     knight.addMoveAnimation(sf::IntRect(0, 256, 128, 128)); // up
     knight.addMoveAnimation(sf::IntRect(0, 768, 128, 128)); // down
@@ -104,10 +104,10 @@ int main()
     // TileMap
     TileMap tilemap;
     // Setting random start and end point
-    sf::Vector2i currentSector(rand() % 9 ,rand() % 9);
+    sf::Vector2i currentSector(rand() % 9 , rand() % 9);
     sf::Vector2i randomEnd(rand() % 9, rand() % 9);
-    //map[randomEnd.x][randomEnd.y].MetaData["EndSector"] = true;
-    map[0][0].MetaData["EndSector"] = true;
+    map[randomEnd.x][randomEnd.y].MetaData["EndSector"] = true;
+
     // Player wealth
     int wealth = 0;
     sf::Font arcadeFont;
@@ -128,14 +128,14 @@ int main()
     sf::Texture treasureTexture;
     treasureTexture.loadFromFile("treasure.png");
     sf::Sprite treasure(treasureTexture);
-    treasure.setTextureRect(sf::IntRect(0, 0, 32, 32));
+    treasure.setTextureRect(sf::IntRect(64, 0, 32, 32));
     treasure.setPosition(sf::Vector2f(window.getSize().x / 3, window.getSize().y / 4));
 
     // Bomb
     sf::Texture bombTexture;
     bombTexture.loadFromFile("bomb.png");
     sf::Sprite bomb(bombTexture);
-    bomb.setPosition(sf::Vector2f(window.getSize().x / 4, window.getSize().y / 3));
+    bomb.setPosition(sf::Vector2f(window.getSize().x - window.getSize().x / 4, window.getSize().y / 3));
     // Game running loop
     while (window.isOpen())
     {
@@ -280,7 +280,7 @@ int main()
         }
         // Loop player around screen
         if (knight.getSprite().getPosition().x > window.getSize().x) { // Horizontal Right
-            if (!map[currentSector.x][currentSector.y].MetaData["Goblin"] || !map[currentSector.x][currentSector.y].MetaData["Bomb"]) {
+            if (!map[currentSector.x][currentSector.y].MetaData["Goblin"] && !map[currentSector.x][currentSector.y].MetaData["Bomb"]) {
                 currentSector.y++;
                 knight.setPos(sf::Vector2f(0, knight.getSprite().getPosition().y));
             }
@@ -289,7 +289,7 @@ int main()
             }
         }
         if (knight.getSprite().getPosition().x < 0) { // Horizontal left
-            if (!map[currentSector.x][currentSector.y].MetaData["Goblin"] || !map[currentSector.x][currentSector.y].MetaData["Bomb"]) {
+            if (!map[currentSector.x][currentSector.y].MetaData["Goblin"] && !map[currentSector.x][currentSector.y].MetaData["Bomb"]) {
                 currentSector.y--;
                 knight.setPos(sf::Vector2f(window.getSize().x, knight.getSprite().getPosition().y));
             }
@@ -298,7 +298,7 @@ int main()
             }
         }
         if (knight.getSprite().getPosition().y > window.getSize().y) { // Vertical down
-            if (!map[currentSector.x][currentSector.y].MetaData["Goblin"] || !map[currentSector.x][currentSector.y].MetaData["Bomb"]) {
+            if (!map[currentSector.x][currentSector.y].MetaData["Goblin"] && !map[currentSector.x][currentSector.y].MetaData["Bomb"]) {
                 currentSector.x++;
                 knight.setPos(sf::Vector2f(knight.getSprite().getPosition().x, 0));
             }
@@ -307,7 +307,7 @@ int main()
             }
         }
         if (knight.getSprite().getPosition().y < 0) { // Vertical up
-            if (!map[currentSector.x][currentSector.y].MetaData["Goblin"] || !map[currentSector.x][currentSector.y].MetaData["Bomb"]) {
+            if (!map[currentSector.x][currentSector.y].MetaData["Goblin"] && !map[currentSector.x][currentSector.y].MetaData["Bomb"]) {
                 currentSector.x--;
                 knight.setPos(sf::Vector2f(knight.getSprite().getPosition().x, window.getSize().y));
             }
