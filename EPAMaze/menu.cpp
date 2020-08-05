@@ -22,11 +22,24 @@ Menu::Menu(float width, float height) {
 	menu[1].setString("Exit");
 	menu[1].setPosition(sf::Vector2f(width / 3, height / (MAX_NUMBER_OF_ITEMS + 1) * 2));
 
+
 	selectedItemIndex = 0;
 }
 
-void Menu::Draw(sf::RenderWindow& window) {
+void Menu::DrawMainMenu(sf::RenderWindow& window) {
 	window.draw(title);
+	for (int i = 0; i < MAX_NUMBER_OF_ITEMS; i++) {
+		window.draw(menu[i]);
+	}
+}
+
+void Menu::DrawEndMenu(sf::RenderWindow& window, int finalScore) {
+	score.setFont(font);
+	score.setCharacterSize(50);
+	score.setFillColor(sf::Color::White);
+	score.setString("You made it out! Your final score was: " + std::to_string(finalScore));
+	score.setPosition(sf::Vector2f(window.getSize().x / 5, 0));
+	window.draw(score);
 	for (int i = 0; i < MAX_NUMBER_OF_ITEMS; i++) {
 		window.draw(menu[i]);
 	}
