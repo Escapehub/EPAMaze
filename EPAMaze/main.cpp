@@ -70,7 +70,7 @@ int main()
     knight.setMoveEndFrame(896);
     knight.setAnimationSpeed(0.1f);
     knight.setFrameSize(128);
-    knight.setSpeed(.1f);
+    knight.setSpeed(.5f); // 0.1f
     knight.setPos(sf::Vector2f(window.getSize().x / 2, window.getSize().y / 2));
     knight.addMoveAnimation(sf::IntRect(0, 256, 128, 128)); // up
     knight.addMoveAnimation(sf::IntRect(0, 768, 128, 128)); // down
@@ -106,8 +106,8 @@ int main()
     // Setting random start and end point
     sf::Vector2i currentSector(rand() % 9 ,rand() % 9);
     sf::Vector2i randomEnd(rand() % 9, rand() % 9);
-    map[randomEnd.x][randomEnd.y].MetaData["EndSector"] = true;
-
+    //map[randomEnd.x][randomEnd.y].MetaData["EndSector"] = true;
+    map[0][0].MetaData["EndSector"] = true;
     // Player wealth
     int wealth = 0;
     sf::Font arcadeFont;
@@ -143,6 +143,7 @@ int main()
         // Player controlled variables
         bool isAttacking = false;
         bool showClearRoom = false;
+        bool endGame = false;
         // restting bomb texture
         bomb.setTexture(bombTexture);
         bomb.setTextureRect(sf::IntRect(0, 0, 64, 64));
@@ -217,7 +218,10 @@ int main()
                     switch (menu.GetPressedItem())
                     {
                     case 0:
-                        isPlaying = true;
+                        if (endGame && !isPlaying)
+                            main();
+                        else
+                            isPlaying = true;
                         break;
                     case 1:
                         window.close();
@@ -331,9 +335,8 @@ int main()
         }
         // Game over
         if (map[currentSector.x][currentSector.y].MetaData["EndSector"]) {
-            std::cout << "You made it to the end \n Your score was: " << std::to_string(wealth) << "\nLoad a new config file to play again!" << std::endl;
+            endGame = true;
             isPlaying = false;
-            main();
         }
         // Show window with assests
         if (isPlaying) {
@@ -351,9 +354,12 @@ int main()
             if (map[currentSector.x][currentSector.y].MetaData["HasDroppedTreasure"])
                 window.draw(map[currentSector.x][currentSector.y].droppedTreasure);
         }
-        else {
-            menu.Draw(window);
+        else if (!isPlaying && endGame) {
+            menu.DrawEndMenu(window, wealth);
         }
+        else {
+            menu.DrawMainMenu(window);
+        }           
         
         window.display();
     }
