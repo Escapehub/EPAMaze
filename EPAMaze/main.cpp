@@ -143,6 +143,9 @@ int main()
         // Player controlled variables
         bool isAttacking = false;
         bool showClearRoom = false;
+        // restting bomb texture
+        bomb.setTexture(bombTexture);
+        bomb.setTextureRect(sf::IntRect(0, 0, 64, 64));
         playerwealth.setString("Wealth: " + std::to_string(wealth));
         sf::Event event;
         while (window.pollEvent(event))
@@ -155,24 +158,44 @@ int main()
                 if (event.key.code == sf::Keyboard::Space) {
                     knight.Attack();
                     isAttacking = true;
-                    if (knight.getSprite().getGlobalBounds().intersects(treasure.getGlobalBounds()) && isAttacking) {
+                    if (knight.getSprite().getGlobalBounds().intersects(treasure.getGlobalBounds()) && isAttacking && map[currentSector.x][currentSector.y].MetaData["Treasure"]) {
                         wealth += 5;
                         map[currentSector.x][currentSector.y].MetaData["Treasure"] = false;
                     }
-                    if (knight.getSprite().getGlobalBounds().intersects(goblin.getSprite().getGlobalBounds()) && isAttacking) {
+                    if (knight.getSprite().getGlobalBounds().intersects(goblin.getSprite().getGlobalBounds()) && isAttacking && map[currentSector.x][currentSector.y].MetaData["Goblin"]) {
                         wealth += 10;
                         map[currentSector.x][currentSector.y].MetaData["Goblin"] = false;
                     }
+                    if (knight.getSprite().getGlobalBounds().intersects(bomb.getGlobalBounds()) && isAttacking && map[currentSector.x][currentSector.y].MetaData["Bomb"]) {
+                        wealth -= 20;
+                        sf::Texture bombExplode;
+                        bombExplode.loadFromFile("bombExplode.png");
+                        sf::IntRect bombExplodeRect(0, 0, 192, 192);
+                        bomb.setTextureRect(bombExplodeRect);
+                        bomb.setTexture(bombExplode);
+                        sf::Clock bombTime;
+                        if (bombTime.getElapsedTime().asSeconds() > 1.0f) {
+                            if (bombExplodeRect.left == 1152)
+                                bombExplodeRect.left = 0;
+                            else
+                                bombExplodeRect.left += 192;
+
+                            bomb.setTextureRect(bombExplodeRect);
+                            bombTime.restart();
+                        }
+                        
+                        map[currentSector.x][currentSector.y].MetaData["Bomb"] = false;
+                    }
                 }
                 // Drop treasure
-                if (event.key.code == sf::Keyboard::E) {
+                if (event.key.code == sf::Keyboard::E && !map[currentSector.x][currentSector.y].MetaData["HasDroppedTreasure"]) {
                     map[currentSector.x][currentSector.y].MetaData["HasDroppedTreasure"] = true;
                     map[currentSector.x][currentSector.y].droppedTreasure.setPosition(sf::Vector2f(knight.getSprite().getPosition().x, knight.getSprite().getPosition().y));
                     wealth -= 1;
                 }
-                // Clearing bomb
+                // Defusing bomb
                 if (event.key.code == sf::Keyboard::F) {
-                    if (knight.getSprite().getGlobalBounds().intersects(bomb.getGlobalBounds())) {
+                    if (knight.getSprite().getGlobalBounds().intersects(bomb.getGlobalBounds()) && map[currentSector.x][currentSector.y].MetaData["Bomb"]) {
                         wealth += 12;
                         map[currentSector.x][currentSector.y].MetaData["Bomb"] = false;
                     }
