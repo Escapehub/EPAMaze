@@ -1,5 +1,4 @@
 #include <fstream>
-#include <iostream>
 #include <sstream>
 #include "player.h"
 #include "tilemap.h"
@@ -8,7 +7,6 @@
 
 int main()
 {
-
     // Loading config file
     std::cout << "Drag and drop config file: " << std::endl;
     std::string configPath;
@@ -98,16 +96,17 @@ int main()
     goblin.addMoveAnimation(sf::IntRect(0, 192, 64, 64)); // left
     goblin.addMoveAnimation(sf::IntRect(0, 64, 64, 64)); // right
     sf::Clock goblinMoveClock;
+
     // Menu
     Menu menu(window.getSize().x, window.getSize().y);
 
     // TileMap
     TileMap tilemap;
+
     // Setting random start and end point
     sf::Vector2i currentSector(rand() % 9 , rand() % 9);
     sf::Vector2i randomEnd(rand() % 9, rand() % 9);
-    //map[randomEnd.x][randomEnd.y].MetaData["EndSector"] = true;
-    map[0][0].MetaData["EndSector"] = true;
+    map[randomEnd.x][randomEnd.y].MetaData["EndSector"] = true;
 
     // Player wealth
     int wealth = 0;
@@ -142,15 +141,18 @@ int main()
     while (window.isOpen())
     {
         window.clear();
+
         // Player controlled variables
         bool isAttacking = false;
         bool showClearRoom = false;
         bool endGame = false;
+
         // restting bomb texture
         bomb.setTexture(bombTexture);
         bomb.setTextureRect(sf::IntRect(0, 0, 64, 64));
         playerwealth.setString("Wealth: " + std::to_string(wealth));
         sf::Event event;
+
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
@@ -186,7 +188,6 @@ int main()
                             bomb.setTextureRect(bombExplodeRect);
                             bombTime.restart();
                         }
-                        
                         map[currentSector.x][currentSector.y].MetaData["Bomb"] = false;
                     }
                 }
@@ -279,6 +280,7 @@ int main()
                 knight.Move(Player::Direction::Left);
             }
         }
+
         // Loop player around screen
         if (knight.getSprite().getPosition().x > window.getSize().x) { // Horizontal Right
             if (!map[currentSector.x][currentSector.y].MetaData["Goblin"] && !map[currentSector.x][currentSector.y].MetaData["Bomb"]) {
@@ -316,6 +318,7 @@ int main()
                 showClearRoom = true;
             }
         }
+
         // Goblin movement
         if (goblinMoveClock.getElapsedTime().asSeconds() > 1) {
             int random = rand() % 3;
@@ -334,11 +337,13 @@ int main()
             }
             goblinMoveClock.restart();
         }
+
         // Game over
         if (map[currentSector.x][currentSector.y].MetaData["EndSector"]) {
             endGame = true;
             isPlaying = false;
         }
+
         // Show window with assests
         if (isPlaying) {
             window.draw(tilemap);
@@ -361,7 +366,6 @@ int main()
         else {
             menu.DrawMainMenu(window);
         }           
-        
         window.display();
     }
     return 0;
