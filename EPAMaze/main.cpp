@@ -110,12 +110,19 @@ int main()
 
     // Player wealth
     int wealth = 0;
-    sf::Font arcadefont;
-    arcadefont.loadFromFile("arcade.ttf");
+    sf::Font arcadeFont;
+    arcadeFont.loadFromFile("arcade.ttf");
     sf::Text playerwealth;
-    playerwealth.setFont(arcadefont);
+    playerwealth.setFont(arcadeFont);
     playerwealth.setFillColor(sf::Color::Black);
     playerwealth.setPosition(sf::Vector2f(window.getSize().x - 150, 20));
+
+    // Clear room text
+    sf::Text clearRoom;
+    clearRoom.setFont(arcadeFont);
+    clearRoom.setFillColor(sf::Color::Black);
+    clearRoom.setString("You must clear the room!");
+    clearRoom.setPosition(sf::Vector2f(window.getSize().y / 2, 0));
     
     // Treasure
     sf::Texture treasureTexture;
@@ -124,11 +131,18 @@ int main()
     treasure.setTextureRect(sf::IntRect(0, 0, 32, 32));
     treasure.setPosition(sf::Vector2f(window.getSize().x / 3, window.getSize().y / 4));
 
+    // Bomb
+    sf::Texture bombTexture;
+    bombTexture.loadFromFile("bomb.png");
+    sf::Sprite bomb(bombTexture);
+    bomb.setPosition(sf::Vector2f(window.getSize().x / 4, window.getSize().y / 3));
     // Game running loop
     while (window.isOpen())
     {
         window.clear();
+        // Player controlled variables
         bool isAttacking = false;
+        bool showClearRoom = false;
         playerwealth.setString("Wealth: " + std::to_string(wealth));
         sf::Event event;
         while (window.pollEvent(event))
@@ -155,6 +169,13 @@ int main()
                     map[currentSector.x][currentSector.y].MetaData["HasDroppedTreasure"] = true;
                     map[currentSector.x][currentSector.y].droppedTreasure.setPosition(sf::Vector2f(knight.getSprite().getPosition().x, knight.getSprite().getPosition().y));
                     wealth -= 1;
+                }
+                // Clearing bomb
+                if (event.key.code == sf::Keyboard::F) {
+                    if (knight.getSprite().getGlobalBounds().intersects(bomb.getGlobalBounds())) {
+                        wealth += 12;
+                        map[currentSector.x][currentSector.y].MetaData["Bomb"] = false;
+                    }
                 }
             }
 
@@ -232,39 +253,39 @@ int main()
         }
         // Loop player around screen
         if (knight.getSprite().getPosition().x > window.getSize().x) { // Horizontal Right
-            if (!map[currentSector.x][currentSector.y].MetaData["Goblin"]) {
+            if (!map[currentSector.x][currentSector.y].MetaData["Goblin"] || !map[currentSector.x][currentSector.y].MetaData["Bomb"]) {
                 currentSector.y++;
                 knight.setPos(sf::Vector2f(0, knight.getSprite().getPosition().y));
             }
             else {
-                std::printf("You must clear the room before moving on! \n");
+                showClearRoom = true;
             }
         }
         if (knight.getSprite().getPosition().x < 0) { // Horizontal left
-            if (!map[currentSector.x][currentSector.y].MetaData["Goblin"]) {
+            if (!map[currentSector.x][currentSector.y].MetaData["Goblin"] || !map[currentSector.x][currentSector.y].MetaData["Bomb"]) {
                 currentSector.y--;
                 knight.setPos(sf::Vector2f(window.getSize().x, knight.getSprite().getPosition().y));
             }
             else {
-                std::printf("You must clear the room before moving on! \n");
+                showClearRoom = true;
             }
         }
         if (knight.getSprite().getPosition().y > window.getSize().y) { // Vertical down
-            if (!map[currentSector.x][currentSector.y].MetaData["Goblin"]) {
+            if (!map[currentSector.x][currentSector.y].MetaData["Goblin"] || !map[currentSector.x][currentSector.y].MetaData["Bomb"]) {
                 currentSector.x++;
                 knight.setPos(sf::Vector2f(knight.getSprite().getPosition().x, 0));
             }
             else {
-                std::printf("You must clear the room before moving on! \n");
+                showClearRoom = true;
             }
         }
         if (knight.getSprite().getPosition().y < 0) { // Vertical up
-            if (!map[currentSector.x][currentSector.y].MetaData["Goblin"]) {
+            if (!map[currentSector.x][currentSector.y].MetaData["Goblin"] || !map[currentSector.x][currentSector.y].MetaData["Bomb"]) {
                 currentSector.x--;
                 knight.setPos(sf::Vector2f(knight.getSprite().getPosition().x, window.getSize().y));
             }
             else {
-                std::printf("You must clear the room before moving on! \n");
+                showClearRoom = true;
             }
         }
         // Goblin movement
@@ -296,10 +317,14 @@ int main()
             window.draw(tilemap);
             window.draw(knight.getSprite());
             window.draw(playerwealth);
+            if (showClearRoom)
+                window.draw(clearRoom);
             if (map[currentSector.x][currentSector.y].MetaData["Treasure"])
                 window.draw(treasure);
             if (map[currentSector.x][currentSector.y].MetaData["Goblin"])
                 window.draw(goblin.getSprite());
+            if (map[currentSector.x][currentSector.y].MetaData["Bomb"])
+                window.draw(bomb);
             if (map[currentSector.x][currentSector.y].MetaData["HasDroppedTreasure"])
                 window.draw(map[currentSector.x][currentSector.y].droppedTreasure);
         }
