@@ -13,7 +13,9 @@ Maze game for Baltic End Point Assessment
 - [x] Create random start and random end
 - [x] Create treasure room deposit system
 - [x] Goblin movement
-- [ ] Add more threats 
+- [x] Add more threats 
+- [x] "You must clear room to move on" show as text on screen
+- [x] Bomb explosion 
 ## Create Config File
 
 Create a comma seperated text file with **NO** spaces.
