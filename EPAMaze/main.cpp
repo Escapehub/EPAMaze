@@ -106,7 +106,8 @@ int main()
     // Setting random start and end point
     sf::Vector2i currentSector(rand() % 9 , rand() % 9);
     sf::Vector2i randomEnd(rand() % 9, rand() % 9);
-    map[randomEnd.x][randomEnd.y].MetaData["EndSector"] = true;
+    //map[randomEnd.x][randomEnd.y].MetaData["EndSector"] = true;
+    map[0][0].MetaData["EndSector"] = true;
 
     // Player wealth
     int wealth = 0;
@@ -136,6 +137,7 @@ int main()
     bombTexture.loadFromFile("bomb.png");
     sf::Sprite bomb(bombTexture);
     bomb.setPosition(sf::Vector2f(window.getSize().x - window.getSize().x / 4, window.getSize().y / 3));
+
     // Game running loop
     while (window.isOpen())
     {
@@ -218,14 +220,13 @@ int main()
                     switch (menu.GetPressedItem())
                     {
                     case 0:
-                        if (endGame && !isPlaying)
-                            main();
-                        else
-                            isPlaying = true;
+                        isPlaying = true;
                         break;
                     case 1:
-                        window.close();
+                        main();
                         break;
+                    case 2:
+                        window.close();
                     }
                     break;
                 }
