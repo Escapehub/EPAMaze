@@ -23,6 +23,7 @@ Map area is **10x10**
 
 ###### [Example config 1](Classic.txt)
 ###### [Example config 2](Crossroads.txt)
+###### [Example config 3](Horizontalroads.txt)
 
 #### Available map sectors:
 - [horizontal](readme/horizontal.png)
