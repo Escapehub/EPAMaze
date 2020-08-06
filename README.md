@@ -8,7 +8,7 @@ Free maze game download by Olde Worlde Phunne
 ## How to Create Config File
 
 ![Create File](https://github.com/Escapehub/Maze-Game/blob/master/readme/tut1.png?raw=true) <br />
-Create an empty text file
+Create an empty text file with **NO** spaces
 
 ![Popuplate File](https://github.com/Escapehub/Maze-Game/blob/master/readme/tut2.png?raw=true) <br />
 Populate file with sectors data with **NO** spaces. Map area is **10x10**
