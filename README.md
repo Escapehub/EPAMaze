@@ -1,18 +1,17 @@
-# EPAMaze
+# Olde Worlde Phunne - Maze Game
 ## About
-Maze game for Baltic End Point Assessment
+Free maze game download by Olde Worlde Phunne
 
 ## Download Latest Release
 [Click here](https://github.com/Escapehub/EPAMaze/releases/latest) to download latest release
 
-## Create Config File
+## How to Create Config File
 
-Create a comma seperated text file with **NO** spaces.
-Map area is **10x10**
+![Create File](https://github.com/Escapehub/Maze-Game/blob/master/readme/tut1.png?raw=true)
+Create empty text file
 
-###### [Example config 1](Classic.txt)
-###### [Example config 2](Crossroads.txt)
-###### [Example config 3](Horizontalroads.txt)
+![Popuplate File] (https://github.com/Escapehub/Maze-Game/blob/master/readme/tut2.png?raw=true)
+Populate file with file with sectors data with **NO** spaces. Map area is **10x10**
 
 #### Available map sectors:
 - [horizontal](readme/horizontal.png)
@@ -27,12 +26,20 @@ Map area is **10x10**
 - [horizontaltop](readme/horizontaltop.png)
 - [horizontalbottom](readme/horizontalbottom.png)
 
+Alternatively you can use one of the pre made configs:
+###### [Example config 1](Classic.txt)
+###### [Example config 2](Crossroads.txt)
+###### [Example config 3](Horizontalroads.txt)
+
 ## How to Play
+![Import Config] (https://github.com/Escapehub/Maze-Game/blob/master/readme/tut3.png?raw=true)
 Upon launching the game drag in config file to console and press enter
 
 Menu navigation is done with **Arrow Keys** and **Enter** to select
 
-game navigation is with either **Arrow Keys** or **WASD**
+You will then be spawned into a random room. The end is also randomly chosen
+
+Game navigation is with either **Arrow Keys** or **WASD**
 
 To pause press **Escape**
 
@@ -46,7 +53,7 @@ Find as much treasure as you can and reach the end!
 
 ## To do
 
-- [ ] Write full documentation on design, build and test
+- [x] Write full documentation on design, build and test
 - [x] Add loop for attack animation
 - [x] Create enemies
 - [x] Build one full map
