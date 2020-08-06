@@ -284,7 +284,10 @@ int main()
         // Loop player around screen
         if (knight.getSprite().getPosition().x > window.getSize().x) { // Horizontal Right
             if (!map[currentSector.x][currentSector.y].MetaData["Goblin"] && !map[currentSector.x][currentSector.y].MetaData["Bomb"]) {
-                currentSector.y++;
+                if (currentSector.y == 9)
+                    currentSector.y = 0;
+                else
+                    currentSector.y++;
                 knight.setPos(sf::Vector2f(0, knight.getSprite().getPosition().y));
             }
             else {
@@ -293,7 +296,10 @@ int main()
         }
         if (knight.getSprite().getPosition().x < 0) { // Horizontal left
             if (!map[currentSector.x][currentSector.y].MetaData["Goblin"] && !map[currentSector.x][currentSector.y].MetaData["Bomb"]) {
-                currentSector.y--;
+                if (currentSector.y == 0)
+                    currentSector.y = 9;
+                else
+                    currentSector.y--;
                 knight.setPos(sf::Vector2f(window.getSize().x, knight.getSprite().getPosition().y));
             }
             else {
@@ -302,7 +308,10 @@ int main()
         }
         if (knight.getSprite().getPosition().y > window.getSize().y) { // Vertical down
             if (!map[currentSector.x][currentSector.y].MetaData["Goblin"] && !map[currentSector.x][currentSector.y].MetaData["Bomb"]) {
-                currentSector.x++;
+                if (currentSector.x == 9)
+                    currentSector.x = 0;
+                else
+                    currentSector.x++;
                 knight.setPos(sf::Vector2f(knight.getSprite().getPosition().x, 0));
             }
             else {
@@ -311,7 +320,10 @@ int main()
         }
         if (knight.getSprite().getPosition().y < 0) { // Vertical up
             if (!map[currentSector.x][currentSector.y].MetaData["Goblin"] && !map[currentSector.x][currentSector.y].MetaData["Bomb"]) {
-                currentSector.x--;
+                if (currentSector.x == 0)
+                    currentSector.y = 9;
+                else
+                    currentSector.x--;
                 knight.setPos(sf::Vector2f(knight.getSprite().getPosition().x, window.getSize().y));
             }
             else {
