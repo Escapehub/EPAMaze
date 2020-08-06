@@ -10,7 +10,7 @@ Free maze game download by Olde Worlde Phunne
 ![Create File](https://github.com/Escapehub/Maze-Game/blob/master/readme/tut1.png?raw=true)
 Create empty text file
 
-![Popuplate File] (https://github.com/Escapehub/Maze-Game/blob/master/readme/tut2.png?raw=true)
+![Popuplate File](https://github.com/Escapehub/Maze-Game/blob/master/readme/tut2.png?raw=true)
 Populate file with file with sectors data with **NO** spaces. Map area is **10x10**
 
 #### Available map sectors:
@@ -32,7 +32,7 @@ Alternatively you can use one of the pre made configs:
 ###### [Example config 3](Horizontalroads.txt)
 
 ## How to Play
-![Import Config] (https://github.com/Escapehub/Maze-Game/blob/master/readme/tut3.png?raw=true)
+![Import Config](https://github.com/Escapehub/Maze-Game/blob/master/readme/tut3.png?raw=true)
 Upon launching the game drag in config file to console and press enter
 
 Menu navigation is done with **Arrow Keys** and **Enter** to select
